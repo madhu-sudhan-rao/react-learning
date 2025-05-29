@@ -1,10 +1,12 @@
 import { useRef, useState } from 'react';
 import './Counter.css';
+import ToggleSwitch from '../toggle-switch/ToggleSwitch';
 
 const Counter = () => {
     const [count, setCount] = useState<number>(0);
     const [minimum, setMinimum] = useState<number | null>(null)
     const [maximum, setMaximum] = useState<number | null>(null)
+    const [disableActionButtons, setDisableActionButtons] = useState(false)
     const ref = useRef(null)
 
     const setMaximumCount = (value: number) => {
@@ -30,16 +32,23 @@ const Counter = () => {
         }
         setCount((prevCount) => prevCount - 1)
     }
+
+    const toggleButtonDisability = (disable: boolean) => {
+        setDisableActionButtons(disable)
+    }
     
   return (
     <>
-      <h1>
-        <u>Counter</u>
-      </h1>
+      <header>
+          <h1>
+            <u>Counter</u>
+          </h1>
+           Disable:  <ToggleSwitch initial={disableActionButtons} onToggle={toggleButtonDisability}  />
+      </header>
       <h1>{count}</h1>
       <div className="action-buttons">
-        <button onClick={increment}>Increment</button>
-        <button onClick={decrement}>Decrement</button>
+        <button onClick={increment} disabled={disableActionButtons}>Increment</button>
+        <button onClick={decrement} disabled={disableActionButtons} >Decrement</button>
       </div>
       <div className="value-defaults-form">
         <div className='minimum-input'>
