@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./PasswordGenerator.css";
 
 function PasswordGenerator() {
   const [password, setPassword] = useState("");
+  const [passwordLength, setPasswordLength] = useState(8);
 
-  const generatePassword = (length = 12) => {
+  useEffect(() => {
+    generatePassword()
+  }, [passwordLength])
+
+  const generatePassword = () => {
+    const length = passwordLength
     const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const lower = "abcdefghijklmnopqrstuvwxyz";
     const number = "0123456789";
@@ -29,9 +35,12 @@ function PasswordGenerator() {
     setPassword(pwd.sort(() => Math.random() - 0.5).join(""));
   };
 
-
   const copyPassword = () => {
     navigator.clipboard.writeText(password);
+  };
+
+  const onPasswordLengthChange = (length: number) => {
+    setPasswordLength(length)
   }
 
   return (
@@ -42,7 +51,7 @@ function PasswordGenerator() {
       </header>
       <main className="body">
         <section className="generator-section">
-          <div className="password">{password || 'Generate Password'}</div>
+          <div className="password">{password || "Generate Password"}</div>
           <div className="action-buttons">
             <div className="copy-button">
               <button onClick={copyPassword}>Copy</button>
@@ -50,6 +59,15 @@ function PasswordGenerator() {
             <div className="regenerate-button">
               <button onClick={() => generatePassword()}>Regenerate</button>
             </div>
+          </div>
+        </section>
+        <section className="password-length">
+          <div className="up">
+            <div className="title">Password length</div>
+            <div className="length">{passwordLength}</div>
+          </div>
+          <div className="down">
+            <input type="range" max={18} min={4} onChange={(e) => onPasswordLengthChange(parseInt(e.target.value))} />
           </div>
         </section>
       </main>
