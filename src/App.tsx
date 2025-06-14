@@ -1,6 +1,7 @@
 
 import './App.css'
 import Counter from './problems/counter/Counter'
+import FormUiValidation from './problems/form-ui/FormUiValidation'
 import PasswordGenerator from './problems/password-generator/PasswordGenerator'
 import TodoList from './problems/todo-list/TodoList'
 
@@ -9,7 +10,8 @@ function App() {
     <>
     {/* <Counter /> */}
     {/* <TodoList /> */}
-    <PasswordGenerator />
+    {/* <PasswordGenerator /> */}
+    <FormUiValidation />
 
     </>
   )
