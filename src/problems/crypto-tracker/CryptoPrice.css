@@ -1,0 +1,14 @@
+.actions {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+
+.connect {
+    background-color: green;
+}
+
+.disconnect {
+    background-color: red;
+}
