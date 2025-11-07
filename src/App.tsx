@@ -4,6 +4,7 @@ import Counter from './problems/counter/Counter'
 import CryptoPrice from './problems/crypto-tracker/CryptoPrice'
 import FormUiValidation from './problems/form-ui/FormUiValidation'
 import PasswordGenerator from './problems/password-generator/PasswordGenerator'
+import SearchFilter from './problems/search-filter/SearchFilter'
 import TodoList from './problems/todo-list/TodoList'
 
 function App() {
@@ -13,8 +14,9 @@ function App() {
     {/* <TodoList /> */}
     {/* <PasswordGenerator /> */}
     {/* <FormUiValidation /> */}
+    {/* <CryptoPrice /> */}
+    <SearchFilter />
 
-    <CryptoPrice />
 
     </>
   )
